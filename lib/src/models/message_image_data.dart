@@ -64,8 +64,7 @@ class VMessageImageData {
   }) {
     return VMessageImageData(
       fileSource: VPlatformFile.fromMap(
-        map: map,
-        baseUrl: baseUrl,
+        map,
       ),
       width: map['width'] as int,
       height: map['height'] as int,

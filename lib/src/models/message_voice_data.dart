@@ -54,7 +54,7 @@ class MessageVoiceData {
     String? baseUrl,
   }) {
     return MessageVoiceData(
-      fileSource: VPlatformFile.fromMap(map: map, baseUrl: baseUrl),
+      fileSource: VPlatformFile.fromMap(map),
       duration: map['duration'] as int,
     );
   }
