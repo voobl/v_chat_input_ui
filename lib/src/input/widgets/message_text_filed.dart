@@ -2,6 +2,7 @@
 // All rights reserved. Use of this source code is governed by a
 // MIT license that can be found in the LICENSE file.
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:v_chat_input_ui/src/models/v_input_theme.dart';
 import 'package:v_chat_mention_controller/v_chat_mention_controller.dart';
@@ -61,7 +62,7 @@ class _MessageTextFiledState extends State<MessageTextFiled> {
       crossAxisAlignment:
           isMultiLine ? CrossAxisAlignment.end : CrossAxisAlignment.center,
       children: [
-        InkWell(
+        GestureDetector(
           onTap: widget.onShowEmoji,
           child: Padding(
             padding: isMultiLine
@@ -76,7 +77,11 @@ class _MessageTextFiledState extends State<MessageTextFiled> {
         Expanded(
           child: AutoDirection(
             text: txt,
-            child: TextField(
+            child: CupertinoTextField(
+              decoration: const BoxDecoration(
+                color: Colors.transparent ,
+              ),
+              placeholder: widget.hint,
               textCapitalization: TextCapitalization.sentences,
               controller: widget.textEditingController,
               focusNode: widget.focusNode,
@@ -90,8 +95,6 @@ class _MessageTextFiledState extends State<MessageTextFiled> {
               style: context.vInputTheme.textFieldTextStyle,
               minLines: 1,
               textAlignVertical: TextAlignVertical.top,
-              decoration: context.vInputTheme.textFieldDecoration
-                  .copyWith(hintText: widget.hint),
               onSubmitted: VPlatforms.isMobile
                   ? null
                   : (value) {
@@ -121,7 +124,7 @@ class _MessageTextFiledState extends State<MessageTextFiled> {
             child: Row(
               children: [
                 if (VPlatforms.isMobile)
-                  InkWell(
+                 GestureDetector(
                     onTap: widget.onCameraPress,
                     child: context.vInputTheme.cameraIcon,
                   ),
@@ -132,7 +135,7 @@ class _MessageTextFiledState extends State<MessageTextFiled> {
             ),
           ),
         ),
-        InkWell(
+       GestureDetector(
           onTap: widget.onAttachFilePress,
           child: Padding(
             padding: isMultiLine

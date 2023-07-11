@@ -2,6 +2,7 @@
 // All rights reserved. Use of this source code is governed by a
 // MIT license that can be found in the LICENSE file.
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
@@ -66,7 +67,7 @@ class VInputTheme extends ThemeExtension<VInputTheme> {
     this.textFieldTextStyle = const TextStyle(height: 1.3),
   }) {
     recordBtn ??= Container(
-      padding: const EdgeInsets.all(12),
+      padding: const EdgeInsets.all(7),
       decoration: const BoxDecoration(
         shape: BoxShape.circle,
         color: Colors.green,
@@ -77,7 +78,7 @@ class VInputTheme extends ThemeExtension<VInputTheme> {
       ),
     );
     sendBtn ??= Container(
-      padding: const EdgeInsets.all(12),
+      padding: const EdgeInsets.all(7),
       decoration: const BoxDecoration(
         shape: BoxShape.circle,
         color: Colors.green,
@@ -125,7 +126,7 @@ class VInputTheme extends ThemeExtension<VInputTheme> {
     this.sendBtn,
   }) {
     recordBtn ??= Container(
-      padding: const EdgeInsets.all(12),
+      padding: const EdgeInsets.all(7),
       decoration: const BoxDecoration(
         shape: BoxShape.circle,
         color: Colors.green,
@@ -136,7 +137,7 @@ class VInputTheme extends ThemeExtension<VInputTheme> {
       ),
     );
     sendBtn ??= Container(
-      padding: const EdgeInsets.all(12),
+      padding: const EdgeInsets.all(7),
       decoration: const BoxDecoration(
         shape: BoxShape.circle,
         color: Colors.green,
@@ -185,14 +186,10 @@ class VInputTheme extends ThemeExtension<VInputTheme> {
 
 extension VInputThemeExt on BuildContext {
   VInputTheme get vInputTheme {
-    final VInputTheme? theme = Theme.of(this).extension<VInputTheme>();
-    if (theme == null) {
-      if (Theme.of(this).brightness == Brightness.dark) {
-        return VInputTheme.dark();
-      } else {
-        return VInputTheme.light();
-      }
+    if (CupertinoTheme.of(this).brightness == Brightness.dark) {
+      return VInputTheme.dark();
+    } else {
+      return VInputTheme.light();
     }
-    return theme;
   }
 }

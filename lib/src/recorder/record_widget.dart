@@ -176,14 +176,14 @@ class RecordWidgetState extends State<RecordWidget> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              InkWell(
+             GestureDetector(
                 onTap: () {
                   // close();
                   widget.onCancel();
                 },
                 child: context.vInputTheme.trashIcon,
               ),
-              // const InkWell(
+              // constGestureDetector(
               //   child: Icon(
               //     Icons.pause_circle_outline,
               //     size: 30,

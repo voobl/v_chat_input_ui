@@ -12,7 +12,7 @@ class MessageRecordBtn extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
+    return GestureDetector(
       onTap: onRecordClick,
       child: context.vInputTheme.recordBtn,
     );

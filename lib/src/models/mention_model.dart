@@ -2,20 +2,23 @@
 // All rights reserved. Use of this source code is governed by a
 // MIT license that can be found in the LICENSE file.
 
+import 'package:super_up_core/super_up_core.dart';
+
 class MentionModel {
-  final String identifier;
+  final String peerId;
   final String name;
   final String image;
 
   MentionModel({
-    required this.identifier,
+    required this.peerId,
     required this.name,
     required this.image,
   });
 
+  String get imageS3 => SConstants.baseMediaUrl + image;
   Map<String, dynamic> toMap() {
     return {
-      'identifier': identifier,
+      'peerId': peerId,
       'name': name,
       'image': image,
     };
@@ -23,7 +26,7 @@ class MentionModel {
 
   factory MentionModel.fromMap(Map<String, dynamic> map) {
     return MentionModel(
-      identifier: map['identifier'] as String,
+      peerId: map['peerId'] as String,
       name: map['name'] as String,
       image: map['image'] as String,
     );
