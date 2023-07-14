@@ -4,6 +4,7 @@
 
 import 'package:emoji_picker_flutter/emoji_picker_flutter.dart';
 import 'package:flutter/material.dart';
+import 'package:super_up_core/super_up_core.dart';
 import 'package:v_platform/v_platform.dart';
 
 class EmojiKeyboard extends StatelessWidget {
@@ -18,7 +19,7 @@ class EmojiKeyboard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isDark = Theme.of(context).brightness == Brightness.dark;
+
     return Offstage(
       offstage: !isEmojiShowing,
       child: SizedBox(
@@ -28,7 +29,7 @@ class EmojiKeyboard extends StatelessWidget {
           config: Config(
             // Issue: https://github.com/flutter/flutter/issues/28894
             emojiSizeMax: 32 * (VPlatforms.isIOS ? 1.30 : 1.0),
-            bgColor: isDark ? Colors.black54 : const Color(0xFFF2F2F2),
+            bgColor: context.isDark ? Colors.black54 : const Color(0xFFF2F2F2),
           ),
         ),
       ),

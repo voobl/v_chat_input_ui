@@ -18,7 +18,7 @@ class VCircleAvatar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CircleAvatar(
-      foregroundColor: Theme.of(context).primaryColor,
+
       backgroundColor: Colors.transparent,
       radius: double.tryParse(radius.toString()),
       backgroundImage: CachedNetworkImageProvider(
