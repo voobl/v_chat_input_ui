@@ -3,7 +3,6 @@
 // MIT license that can be found in the LICENSE file.
 
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 
 extension MediaQueryExt2 on BuildContext {
   bool get isDark => CupertinoTheme.of(this).brightness == Brightness.dark;
