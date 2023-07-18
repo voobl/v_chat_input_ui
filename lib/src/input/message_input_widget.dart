@@ -2,6 +2,7 @@
 // All rights reserved. Use of this source code is governed by a
 // MIT license that can be found in the LICENSE file.
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:latlong2/latlong.dart' as latlong;
 import 'package:phosphor_flutter/phosphor_flutter.dart';
@@ -211,20 +212,19 @@ class _VMessageInputWidgetState extends State<VMessageInputWidget> {
                                     ),
                                   );
                                 }
-                                return ListTile(
+                                return CupertinoListTile(
                                   leading: VCircleAvatar(
-                                    fullUrl:
-                                        _mentionsWithPhoto[index].imageS3,
+                                    fullUrl: _mentionsWithPhoto[index].imageS3,
                                     radius: 20,
                                   ),
-                                  dense: false,
-                                  contentPadding: EdgeInsets.zero,
+                                  padding: EdgeInsets.zero,
                                   onTap: () {
-                                    _textEditingController
-                                        .addMention(MentionData(
-                                      id: _mentionsWithPhoto[index].peerId,
-                                      display: _mentionsWithPhoto[index].name,
-                                    ));
+                                    _textEditingController.addMention(
+                                      MentionData(
+                                        id: _mentionsWithPhoto[index].peerId,
+                                        display: _mentionsWithPhoto[index].name,
+                                      ),
+                                    );
                                   },
                                   title: Text(_mentionsWithPhoto[index].name),
                                 );
