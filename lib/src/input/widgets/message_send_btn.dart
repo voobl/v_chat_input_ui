@@ -15,7 +15,7 @@ class MessageSendBtn extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
+    return GestureDetector(
       onTap: onSend,
       child: context.vInputTheme.sendBtn,
     );

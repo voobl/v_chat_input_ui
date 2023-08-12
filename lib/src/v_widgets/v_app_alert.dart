@@ -28,6 +28,7 @@ abstract class VAppAlert {
     return await adaptive_dialog.showModalActionSheet<ModelSheetItem?>(
       context: context,
       title: title,
+      style: AdaptiveStyle.iOS,
       cancelLabel: cancelText,
       isDismissible: true,
       actions: content

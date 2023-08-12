@@ -2,23 +2,19 @@
 // All rights reserved. Use of this source code is governed by a
 // MIT license that can be found in the LICENSE file.
 
-import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 
 extension MediaQueryExt2 on BuildContext {
-  bool get isDark => Theme.of(this).brightness == Brightness.dark;
-
+  bool get isDark => CupertinoTheme.of(this).brightness == Brightness.dark;
+  CupertinoTextThemeData get cupertinoTextTheme =>
+      CupertinoTheme.of(this).textTheme;
   Future<T?> toPage<T>(Widget page) => Navigator.push(
         this,
-        MaterialPageRoute(
+    CupertinoPageRoute(
           builder: (context) => page,
         ),
       );
 
-  Future<T?> toPageAndRemoveAll<T>(Widget page) {
-    return Navigator.of(this).pushAndRemoveUntil(
-        MaterialPageRoute(builder: (context) => page),
-        (Route<dynamic> route) => false);
-  }
 
   bool get isRtl => Directionality.of(this).name.toLowerCase() == "rtl";
 }
