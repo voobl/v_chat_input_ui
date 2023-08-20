@@ -5,8 +5,8 @@
 import 'package:flutter/cupertino.dart';
  import 'package:latlong2/latlong.dart' as latlong;
 import 'package:phosphor_flutter/phosphor_flutter.dart';
-import 'package:place_picker/entities/localization_item.dart';
-import 'package:place_picker/place_picker.dart';
+import 'package:place_picker_v2/entities/localization_item.dart';
+import 'package:place_picker_v2/place_picker.dart';
 import 'package:v_chat_input_ui/src/input/widgets/emoji_keyborad.dart';
 import 'package:v_chat_input_ui/src/input/widgets/message_record_btn.dart';
 import 'package:v_chat_input_ui/src/input/widgets/message_send_btn.dart';
