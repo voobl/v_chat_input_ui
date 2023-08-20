@@ -16,3 +16,6 @@
 - full localization support
 ## 1.0.0
 - Support Dart 3
+## 1.2.1
+- upgrade packages
+- 
