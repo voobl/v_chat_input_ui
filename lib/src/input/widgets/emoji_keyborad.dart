@@ -4,7 +4,7 @@
 
 import 'package:emoji_picker_flutter/emoji_picker_flutter.dart';
 import 'package:flutter/material.dart';
-import 'package:super_up_core/super_up_core.dart';
+import 'package:v_chat_input_ui/src/v_widgets/extension.dart';
 import 'package:v_platform/v_platform.dart';
 
 class EmojiKeyboard extends StatelessWidget {

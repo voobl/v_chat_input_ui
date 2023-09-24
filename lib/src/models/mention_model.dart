@@ -2,7 +2,7 @@
 // All rights reserved. Use of this source code is governed by a
 // MIT license that can be found in the LICENSE file.
 
-import 'package:super_up_core/super_up_core.dart';
+import 'package:v_platform/v_platform.dart';
 
 class MentionModel {
   final String peerId;
@@ -15,7 +15,8 @@ class MentionModel {
     required this.image,
   });
 
-  String get imageS3 => SConstants.baseMediaUrl + image;
+  String get imageS3 => VPlatformFile.fromUrl(url: image).url!;
+
   Map<String, dynamic> toMap() {
     return {
       'peerId': peerId,
