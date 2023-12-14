@@ -3,6 +3,7 @@
 // MIT license that can be found in the LICENSE file.
 
 import 'package:audio_waveforms/audio_waveforms.dart';
+import 'package:flutter/foundation.dart';
 import 'package:record/record.dart';
 
 abstract class AppRecorder {
@@ -18,11 +19,7 @@ abstract class AppRecorder {
 }
 
 class MobileRecorder extends AppRecorder {
-  final recorder = RecorderController()
-    ..androidEncoder = AndroidEncoder.aac
-    ..androidOutputFormat = AndroidOutputFormat.mpeg4
-    ..iosEncoder = IosEncoder.kAudioFormatMPEG4AAC
-    ..sampleRate = 44100;
+  final recorder = RecorderController();
 
   @override
   Future<void> start([String? path]) async {
@@ -55,7 +52,7 @@ class MobileRecorder extends AppRecorder {
 }
 
 class PlatformRecorder extends AppRecorder {
-  final recorder = Record();
+  final recorder = AudioRecorder();
 
   @override
   Future close() async {
@@ -69,7 +66,14 @@ class PlatformRecorder extends AppRecorder {
 
   @override
   Future<void> start([String? path]) async {
-    await recorder.start();
+    var encoder = const RecordConfig(encoder: AudioEncoder.aacLc);
+    if (kIsWeb) {
+      encoder = const RecordConfig(encoder: AudioEncoder.opus);
+    }
+    await recorder.start(
+      encoder,
+      path: path ?? "",
+    );
   }
 
   @override

@@ -3,7 +3,6 @@
 // MIT license that can be found in the LICENSE file.
 
 import 'package:flutter/cupertino.dart';
- import 'package:latlong2/latlong.dart' as latlong;
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:place_picker_v2/entities/localization_item.dart';
 import 'package:place_picker_v2/place_picker.dart';
@@ -389,7 +388,7 @@ class _VMessageInputWidgetState extends State<VMessageInputWidget> {
               result.latLng != null &&
               result.latLng != null) {
             final location = LocationMessageData(
-              latLng: latlong.LatLng(
+              latLng: LatLng(
                 result.latLng!.latitude,
                 result.latLng!.longitude,
               ),

@@ -2,7 +2,8 @@
 // All rights reserved. Use of this source code is governed by a
 // MIT license that can be found in the LICENSE file.
 
-import 'package:latlong2/latlong.dart';
+
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 import 'link_preview_data.dart';
 

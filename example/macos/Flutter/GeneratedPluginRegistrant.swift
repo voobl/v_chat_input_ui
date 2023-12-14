@@ -12,7 +12,7 @@ import macos_ui
 import macos_window_utils
 import path_provider_foundation
 import photo_manager
-import record_macos
+import record_darwin
 import shared_preferences_foundation
 import sqflite
 
@@ -24,7 +24,7 @@ func RegisterGeneratedPlugins(registry: FlutterPluginRegistry) {
   MacOSWindowUtilsPlugin.register(with: registry.registrar(forPlugin: "MacOSWindowUtilsPlugin"))
   PathProviderPlugin.register(with: registry.registrar(forPlugin: "PathProviderPlugin"))
   PhotoManagerPlugin.register(with: registry.registrar(forPlugin: "PhotoManagerPlugin"))
-  RecordMacosPlugin.register(with: registry.registrar(forPlugin: "RecordMacosPlugin"))
+  RecordPlugin.register(with: registry.registrar(forPlugin: "RecordPlugin"))
   SharedPreferencesPlugin.register(with: registry.registrar(forPlugin: "SharedPreferencesPlugin"))
   SqflitePlugin.register(with: registry.registrar(forPlugin: "SqflitePlugin"))
 }
