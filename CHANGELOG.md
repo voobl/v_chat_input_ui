@@ -20,4 +20,5 @@
 - upgrade packages
 ## 1.2.2
 - update we_assets_package version
-- 
+## 1.3.0
+- upgrade packages
