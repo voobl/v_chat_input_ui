@@ -10,11 +10,10 @@ extension MediaQueryExt2 on BuildContext {
       CupertinoTheme.of(this).textTheme;
   Future<T?> toPage<T>(Widget page) => Navigator.push(
         this,
-    CupertinoPageRoute(
+        CupertinoPageRoute(
           builder: (context) => page,
         ),
       );
-
 
   bool get isRtl => Directionality.of(this).name.toLowerCase() == "rtl";
 }

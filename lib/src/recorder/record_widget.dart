@@ -176,7 +176,7 @@ class RecordWidgetState extends State<RecordWidget> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-             GestureDetector(
+              GestureDetector(
                 onTap: () {
                   // close();
                   widget.onCancel();

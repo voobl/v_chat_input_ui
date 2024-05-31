@@ -79,7 +79,7 @@ class _MessageTextFiledState extends State<MessageTextFiled> {
             text: txt,
             child: CupertinoTextField(
               decoration: const BoxDecoration(
-                color: Colors.transparent ,
+                color: Colors.transparent,
               ),
               placeholder: widget.hint,
               textCapitalization: TextCapitalization.sentences,
@@ -124,7 +124,7 @@ class _MessageTextFiledState extends State<MessageTextFiled> {
             child: Row(
               children: [
                 if (VPlatforms.isMobile)
-                 GestureDetector(
+                  GestureDetector(
                     onTap: widget.onCameraPress,
                     child: context.vInputTheme.cameraIcon,
                   ),
@@ -135,7 +135,7 @@ class _MessageTextFiledState extends State<MessageTextFiled> {
             ),
           ),
         ),
-       GestureDetector(
+        GestureDetector(
           onTap: widget.onAttachFilePress,
           child: Padding(
             padding: isMultiLine

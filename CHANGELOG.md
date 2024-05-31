@@ -22,3 +22,5 @@
 - update we_assets_package version
 ## 1.3.0
 - upgrade packages
+## 2.0.0
+- Support Flutter V3.22
