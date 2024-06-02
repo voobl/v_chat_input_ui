@@ -9,7 +9,6 @@ import 'package:cross_file/cross_file.dart';
 import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:stop_watch_timer/stop_watch_timer.dart';
-import 'package:textless/textless.dart';
 import 'package:uuid/uuid.dart';
 import 'package:v_chat_input_ui/src/recorder/recorders.dart';
 import 'package:v_chat_input_ui/src/v_widgets/extension.dart';
@@ -152,8 +151,13 @@ class RecordWidgetState extends State<RecordWidget> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              _currentTime.text.black
-                  .color(context.isDark ? Colors.white : Colors.black54),
+              Text(
+                _currentTime,
+                style: TextStyle(
+                  fontWeight: FontWeight.w900,
+                  color: context.isDark ? Colors.white : Colors.black54,
+                ),
+              ),
               const SizedBox(
                 width: 15,
               ),
