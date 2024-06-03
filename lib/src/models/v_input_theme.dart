@@ -5,6 +5,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
+import 'package:v_chat_input_ui/src/v_widgets/extension.dart';
 
 class VInputTheme extends ThemeExtension<VInputTheme> {
   final BoxDecoration containerDecoration;
@@ -186,10 +187,14 @@ class VInputTheme extends ThemeExtension<VInputTheme> {
 
 extension VInputThemeExt on BuildContext {
   VInputTheme get vInputTheme {
-    if (CupertinoTheme.of(this).brightness == Brightness.dark) {
-      return VInputTheme.dark();
-    } else {
-      return VInputTheme.light();
+    final VInputTheme? theme = Theme.of(this).extension<VInputTheme>();
+    if (theme == null) {
+      if (isDark) {
+        return VInputTheme.dark();
+      } else {
+        return VInputTheme.light();
+      }
     }
+    return theme;
   }
 }
