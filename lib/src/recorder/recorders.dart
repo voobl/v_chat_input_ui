@@ -4,7 +4,7 @@
 
 import 'package:audio_waveforms/audio_waveforms.dart';
 import 'package:flutter/foundation.dart';
-import 'package:record/record.dart';
+import 'package:record_without_android/record.dart';
 
 abstract class AppRecorder {
   Future<void> start([String? path]);
