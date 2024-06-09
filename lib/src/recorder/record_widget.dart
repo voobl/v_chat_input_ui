@@ -46,13 +46,7 @@ class RecordWidgetState extends State<RecordWidget> {
   @override
   void initState() {
     super.initState();
-    // recorder = PlatformRecorder();
-    if (VPlatforms.isMobile) {
-      _recorder = MobileRecorder();
-    } else {
-      _recorder = PlatformRecorder();
-    }
-
+    _recorder = PlatformRecorder();
     _rawTime = _stopWatchTimer.rawTime.listen((value) {
       _recordMilli = value;
       _currentTime = StopWatchTimer.getDisplayTime(

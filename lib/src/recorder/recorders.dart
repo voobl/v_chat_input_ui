@@ -4,7 +4,7 @@
 
 import 'package:audio_waveforms/audio_waveforms.dart';
 import 'package:flutter/foundation.dart';
-import 'package:record_without_android/record.dart';
+import 'package:record/record.dart';
 
 abstract class AppRecorder {
   Future<void> start([String? path]);
@@ -52,66 +52,46 @@ class MobileRecorder extends AppRecorder {
 }
 
 class PlatformRecorder extends AppRecorder {
-  final recorder = AudioRecorder();
+  //final recorder = AudioRecorder();
+  final record = Record();
 
   @override
   Future close() async {
-    await recorder.dispose();
+    //  await recorder.dispose();
+    await record.dispose();
   }
 
   @override
   Future pause() async {
-    await recorder.pause();
+    //   await recorder.pause();
+    await record.pause();
   }
 
   @override
   Future<void> start([String? path]) async {
-    var encoder = const RecordConfig(encoder: AudioEncoder.aacLc);
-    if (kIsWeb) {
-      encoder = const RecordConfig(encoder: AudioEncoder.opus);
-    }
-    await recorder.start(
-      encoder,
-      path: path ?? "",
-    );
+    // var encoder = const RecordConfig(encoder: AudioEncoder.aacLc);
+    // if (kIsWeb) {
+    //   encoder = const RecordConfig(encoder: AudioEncoder.opus);
+    // }
+    // await recorder.start(
+    //   encoder,
+    //   path: path ?? "",
+    // );
+
+    await record.start(path: path ?? "");
+
+
   }
 
   @override
   Future<bool> isRecording() async {
-    return recorder.isRecording();
+    // return recorder.isRecording();
+    return record.isRecording();
   }
 
   @override
   Future<String?> stop() async {
-    return recorder.stop();
+    // return recorder.stop();
+    return record.stop();
   }
 }
-
-// class WebRecorder extends AppRecorder {
-//   final recorder = FlutterSoundRecorder();
-//
-//   @override
-//   Future close() async {
-//     await recorder.closeAudioSession();
-//   }
-//
-//   @override
-//   Future pause() async {
-//     await recorder.pauseRecorder();
-//   }
-//
-//   @override
-//   Future<void> start([String? path]) async {
-//     await recorder.startRecorder();
-//   }
-//
-//   @override
-//   Future<bool> isRecording() async {
-//     return recorder.isRecording;
-//   }
-//
-//   @override
-//   Future<String?> stop() async {
-//     return recorder.stopRecorder();
-//   }
-// }
