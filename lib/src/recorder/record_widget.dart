@@ -3,12 +3,15 @@
 // MIT license that can be found in the LICENSE file.
 
 import 'dart:async';
+import 'dart:io';
 
-import 'package:audio_waveforms/audio_waveforms.dart';
 import 'package:cross_file/cross_file.dart';
 import 'package:flutter/material.dart';
+import 'package:path/path.dart';
+
 import 'package:path_provider/path_provider.dart';
 import 'package:stop_watch_timer/stop_watch_timer.dart';
+
 import 'package:uuid/uuid.dart';
 import 'package:v_chat_input_ui/src/recorder/recorders.dart';
 import 'package:v_chat_input_ui/src/v_widgets/extension.dart';
@@ -87,17 +90,20 @@ class RecordWidgetState extends State<RecordWidget> {
 
   Future<String> _getDir() async {
     final appDirectory = await getApplicationDocumentsDirectory();
-    return "${appDirectory.path}/${_uuid.v4()}.aac";
+    return join(appDirectory.path, '${_uuid.v4()}.aac');
   }
 
   Future<bool> _start() async {
+    if (VPlatforms.isDeskTop) return false;
     if (VPlatforms.isWeb) {
       await _recorder!.start();
     } else {
       final path = await _getDir();
       await _recorder!.start(path);
     }
-    if (await _recorder!.isRecording()) {
+    await Future.delayed(const Duration(milliseconds: 200));
+    final isRecording = await _recorder!.isRecording();
+    if (isRecording) {
       startCounterUp();
       return true;
     }
@@ -120,12 +126,12 @@ class RecordWidgetState extends State<RecordWidget> {
         duration: _recordMilli,
         fileSource: VPlatforms.isWeb
             ? VPlatformFile.fromBytes(
-                name: "${DateTime.now().microsecondsSinceEpoch}.wave",
-                bytes: bytes!,
-              )
+          name: "${DateTime.now().microsecondsSinceEpoch}.wave",
+          bytes: bytes!,
+        )
             : VPlatformFile.fromPath(
-                fileLocalPath: uri.path,
-              ),
+          fileLocalPath: uri.path,
+        ),
       );
       //await close();
       return data;
@@ -152,20 +158,21 @@ class RecordWidgetState extends State<RecordWidget> {
                   color: context.isDark ? Colors.white : Colors.black54,
                 ),
               ),
+
               const SizedBox(
                 width: 15,
               ),
-              if (_recorder is MobileRecorder)
-                Expanded(
-                  child: AudioWaveforms(
-                    size: Size(MediaQuery.of(context).size.width, 40.0),
-                    recorderController: (_recorder as MobileRecorder).recorder,
-                  ),
-                )
-              else
-                const SizedBox(
-                  height: 10,
-                ),
+              // if (_recorder is MobileRecorder)
+              //   Expanded(
+              //     child: AudioWaveforms(
+              //       size: Size(MediaQuery.of(context).size.width, 40.0),
+              //       recorderController: (_recorder as MobileRecorder).recorder,
+              //     ),
+              //   )
+              // else
+              const SizedBox(
+                height: 10,
+              ),
             ],
           ),
           const SizedBox(

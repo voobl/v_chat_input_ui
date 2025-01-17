@@ -24,3 +24,5 @@
 - upgrade packages
 ## 2.0.0
 - Support Flutter V3.22
+## 2.0.1
+- Support Flutter V3.24
