@@ -26,3 +26,5 @@
 - Support Flutter V3.22
 ## 2.0.1
 - Support Flutter V3.24
+## 2.2.0
+- Support Flutter V3.27

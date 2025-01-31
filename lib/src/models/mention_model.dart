@@ -15,7 +15,7 @@ class MentionModel {
     required this.image,
   });
 
-  String get imageS3 => VPlatformFile.fromUrl(url: image).url!;
+  String get imageS3 => VPlatformFile.fromUrl(networkUrl: image).fullNetworkUrl!;
 
   Map<String, dynamic> toMap() {
     return {

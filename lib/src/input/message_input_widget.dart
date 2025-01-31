@@ -340,16 +340,16 @@ class _VMessageInputWidgetState extends State<VMessageInputWidget> {
           ModelSheetItem<AttachEnumRes>(
             title: language.media,
             id: AttachEnumRes.media,
-            iconData: const Icon(PhosphorIcons.image),
+            iconData:  Icon(PhosphorIcons.image()),
           ),
           ModelSheetItem<AttachEnumRes>(
               title: language.files,
               id: AttachEnumRes.files,
-              iconData: const Icon(PhosphorIcons.file)),
+              iconData:  Icon(PhosphorIcons.file())),
           if (widget.googleMapsApiKey != null)
             ModelSheetItem<AttachEnumRes>(
               title: language.location,
-              iconData: const Icon(PhosphorIcons.mapPin),
+              iconData:  Icon(PhosphorIcons.mapPin()),
               id: AttachEnumRes.location,
             ),
         ],

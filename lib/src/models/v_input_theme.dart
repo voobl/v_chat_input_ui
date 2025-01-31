@@ -5,16 +5,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
-import 'package:v_chat_input_ui/src/v_widgets/extension.dart';
+import 'package:v_platform/v_platform.dart';
 
 class VInputTheme extends ThemeExtension<VInputTheme> {
   final BoxDecoration containerDecoration;
   final InputDecoration textFieldDecoration;
 
-  final Widget cameraIcon;
-  final Widget fileIcon;
-  final Widget emojiIcon;
-  final Widget trashIcon;
+  Widget? cameraIcon;
+  Widget? fileIcon;
+  Widget? emojiIcon;
+  Widget? trashIcon;
 
   Widget? recordBtn;
   Widget? sendBtn;
@@ -39,26 +39,9 @@ class VInputTheme extends ThemeExtension<VInputTheme> {
         Radius.circular(15),
       ),
     ),
-    this.cameraIcon = const Icon(
-      PhosphorIcons.camera,
-      size: 26,
-      color: Colors.green,
-    ),
-    this.trashIcon = const Icon(
-      PhosphorIcons.trash,
-      color: Colors.redAccent,
-      size: 30,
-    ),
-    this.fileIcon = const Icon(
-      PhosphorIcons.paperclip,
-      size: 26,
-      color: Colors.green,
-    ),
-    this.emojiIcon = const Icon(
-      PhosphorIcons.smiley,
-      size: 26,
-      color: Colors.green,
-    ),
+
+
+
     this.textFieldDecoration = const InputDecoration(
       border: InputBorder.none,
       fillColor: Colors.transparent,
@@ -67,14 +50,34 @@ class VInputTheme extends ThemeExtension<VInputTheme> {
     this.sendBtn,
     this.textFieldTextStyle = const TextStyle(height: 1.3),
   }) {
+    emojiIcon ??= Icon(
+      PhosphorIcons.smiley(),
+      size: 26,
+      color: Colors.green,
+    );
+    fileIcon ??= const Icon(
+      CupertinoIcons.paperclip,
+      size: 26,
+      color: Colors.green,
+    );
+    cameraIcon ??= const Icon(
+      CupertinoIcons.camera ,
+      size: 26,
+      color: Colors.green,
+    );
+    trashIcon ??= const Icon(
+      CupertinoIcons.trash ,
+      color: Colors.redAccent,
+      size: 30,
+    );
     recordBtn ??= Container(
       padding: const EdgeInsets.all(7),
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         shape: BoxShape.circle,
-        color: Colors.green,
+        color: VPlatforms.isDeskTop ? Colors.grey : Colors.green,
       ),
-      child: const Icon(
-        PhosphorIcons.microphoneFill,
+      child: Icon(
+        PhosphorIcons.microphone(PhosphorIconsStyle.fill) ,
         color: Colors.white,
       ),
     );
@@ -98,26 +101,8 @@ class VInputTheme extends ThemeExtension<VInputTheme> {
         Radius.circular(15),
       ),
     ),
-    this.trashIcon = const Icon(
-      PhosphorIcons.trash,
-      color: Colors.redAccent,
-      size: 30,
-    ),
-    this.cameraIcon = const Icon(
-      PhosphorIcons.camera,
-      size: 26,
-      color: Colors.green,
-    ),
-    this.fileIcon = const Icon(
-      PhosphorIcons.paperclip,
-      size: 26,
-      color: Colors.green,
-    ),
-    this.emojiIcon = const Icon(
-      PhosphorIcons.smiley,
-      size: 26,
-      color: Colors.green,
-    ),
+
+
     this.textFieldDecoration = const InputDecoration(
       border: InputBorder.none,
       fillColor: Colors.transparent,
@@ -126,14 +111,34 @@ class VInputTheme extends ThemeExtension<VInputTheme> {
     this.textFieldTextStyle = const TextStyle(height: 1.3),
     this.sendBtn,
   }) {
+    emojiIcon ??= const Icon(
+      CupertinoIcons.smiley ,
+      size: 26,
+      color: Colors.green,
+    );
+    fileIcon ??= const Icon(
+      CupertinoIcons.paperclip ,
+      size: 26,
+      color: Colors.green,
+    );
+    cameraIcon ??= const Icon(
+      CupertinoIcons.camera ,
+      size: 26,
+      color: Colors.green,
+    );
+    trashIcon ??= const Icon(
+      CupertinoIcons.trash ,
+      color: Colors.redAccent,
+      size: 30,
+    );
     recordBtn ??= Container(
       padding: const EdgeInsets.all(7),
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         shape: BoxShape.circle,
-        color: Colors.green,
+        color: VPlatforms.isDeskTop ? Colors.grey : Colors.green,
       ),
-      child: const Icon(
-        PhosphorIcons.microphoneFill,
+      child: Icon(
+        PhosphorIcons.microphone (PhosphorIconsStyle.fill),
         color: Colors.white,
       ),
     );
@@ -187,14 +192,10 @@ class VInputTheme extends ThemeExtension<VInputTheme> {
 
 extension VInputThemeExt on BuildContext {
   VInputTheme get vInputTheme {
-    final VInputTheme? theme = Theme.of(this).extension<VInputTheme>();
-    if (theme == null) {
-      if (isDark) {
-        return VInputTheme.dark();
-      } else {
-        return VInputTheme.light();
-      }
+    if (CupertinoTheme.of(this).brightness == Brightness.dark) {
+      return VInputTheme.dark();
+    } else {
+      return VInputTheme.light();
     }
-    return theme;
   }
 }

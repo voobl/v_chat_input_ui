@@ -20,15 +20,7 @@ abstract class VAppPick {
         final croppedFile = await ImageCropper().cropImage(
           sourcePath: img.fileLocalPath!,
           compressQuality: 70,
-          cropStyle: CropStyle.circle,
-          compressFormat: ImageCompressFormat.png,
-          aspectRatioPresets: [
-            CropAspectRatioPreset.square,
-            CropAspectRatioPreset.ratio3x2,
-            CropAspectRatioPreset.original,
-            CropAspectRatioPreset.ratio4x3,
-            CropAspectRatioPreset.ratio16x9
-          ],
+          compressFormat: ImageCompressFormat.jpg,
           uiSettings: [
             AndroidUiSettings(
               toolbarTitle: 'Crop It',
@@ -176,14 +168,6 @@ abstract class VAppPick {
     if (!file.isContentImage) return null;
     final CroppedFile? croppedFile = await ImageCropper().cropImage(
       sourcePath: file.fileLocalPath!,
-      aspectRatioPresets: aspectRatioPresets ??
-          [
-            CropAspectRatioPreset.square,
-            CropAspectRatioPreset.ratio3x2,
-            CropAspectRatioPreset.original,
-            CropAspectRatioPreset.ratio4x3,
-            CropAspectRatioPreset.ratio16x9
-          ],
       uiSettings: [
         AndroidUiSettings(
           toolbarTitle: 'Cropper',
