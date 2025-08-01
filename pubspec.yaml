@@ -22,7 +22,7 @@ dependencies:
   cross_file: ^0.3.4+2
   #  record_without_android: ^5.1.1
   v_chat_mention_controller: ^1.0.0
-  emoji_picker_flutter: ^3.1.0
+  emoji_picker_flutter: ^4.3.0
   meta: ^1.15.0
   record: 5.1.2
   intl: ^0.20.2
